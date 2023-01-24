@@ -16,8 +16,10 @@
 }
 
 .choose-payment__heading {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: 5%;
+    margin-left: 13px ;
+    display: inline-block;
 }
 
 ul {
@@ -28,17 +30,16 @@ ul {
 .choose-payment__link {
     display: flex;
     gap: 2%;
-    /* margin: auto; */
     margin-bottom: 15px;
     padding: 24px;
-    border-bottom: 1px solid #B2B2B2;
+    border-bottom: 1px solid #EBF0FF;
     width: 50%;
     text-decoration: none;
     color: #000;
 
 }
 
-.choose-payment__link>img {
+.choose-payment__icons {
     width: 32px;
 }
 
