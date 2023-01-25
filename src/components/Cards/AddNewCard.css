@@ -1,0 +1,16 @@
+.add-card {
+    margin-bottom: 10px;
+}
+
+.add-card__label {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.flex {
+    display: flex;
+    gap: 10%;
+    align-items: center;
+
+}
