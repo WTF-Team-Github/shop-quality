@@ -19,6 +19,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <p>
+        if you don't accept this pull request ehn! 
+      </p>
       <Home />
     </div>
   );
