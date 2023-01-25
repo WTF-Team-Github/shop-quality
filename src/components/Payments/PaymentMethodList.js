@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "../../UI/Button";
 import "./PaymentMethodList.css";
-import { FaCreditCard, FaBuilding } from "react-icons/fa";
 import { icons } from "../../assets/index";
 import Card from "../../UI/Card";
+import { Link } from "react-router-dom";
 
 const PaymentMethodList = () => {
   return (
@@ -15,10 +15,10 @@ const PaymentMethodList = () => {
         </div>
 
         <ul className="choose-payment__list">
-          <a className="choose-payment__link" href="">
+          <Link to="/cards" className="choose-payment__link" >
             <img className="choose-payment__icons" src={icons.creditCard} alt="" />
             <li className="choose-payment__list-item">Card</li>
-          </a>
+          </Link>
 
           <a className="choose-payment__link" href="">
             <img className="choose-payment__icons" src={icons.bankBuilding} alt="" />
