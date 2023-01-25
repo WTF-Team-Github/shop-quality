@@ -6,9 +6,8 @@ const Input = (props) => {
   return (
     <>
       <label className={`flexLabel ${props.labelClassName}`} htmlFor={props.id}>
-          <span className="input-label-bold">{props.label}</span>
-          <small className="input-label-small">{props.description}</small>
-
+        <span className="input-label-bold">{props.label}</span>
+        <small className="input-label-small">{props.description}</small>
       </label>
 
       <input
