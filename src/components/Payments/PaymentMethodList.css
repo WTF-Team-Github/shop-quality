@@ -9,17 +9,18 @@
 
 .choose-payment__card {
     width: 90%;
-    height: 90%;
     margin: auto;
     background-color: #FFFFFF;
     text-align: left;
     padding: 16px;
+    display: flex;
+    flex-direction: column;
 }
 
 .choose-payment__heading {
     font-size: 3.5rem;
     margin-bottom: 5%;
-    margin-left: 13px ;
+    margin-left: 13px;
     display: inline-block;
 }
 
@@ -30,14 +31,18 @@ ul {
 
 .choose-payment__link {
     display: flex;
-    gap: 2%;
-    margin-bottom: 15px;
-    padding: 24px;
+    gap: 4%;
+    margin-bottom: 25px;
+    padding: 32px;
     border-bottom: 1px solid #EBF0FF;
-    width: 50%;
     text-decoration: none;
-    color: #000;
+    color: #000000;
+}
 
+.choose-payment__link:hover {
+    background-color: #000000;
+    color: white;
+    /* font-size: 3rem; */
 }
 
 .choose-payment__icons {
@@ -55,6 +60,7 @@ ul {
     padding: 16px;
     border-radius: 5px;
     color: #FFFFFF;
+
 }
 
 .active {
