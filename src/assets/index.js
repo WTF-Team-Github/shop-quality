@@ -5,6 +5,7 @@ export const icons = {
   payCash: require("./icons/pay-cash.svg").default,
   arrowLeft: require("./icons/arrow-left.svg").default,
   add: require("./icons/add.svg").default,
+  close: require("./icons/close.svg").default,
   phoneDial: require("./icons/phone-dial.svg").default,
 
 };
