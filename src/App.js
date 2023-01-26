@@ -2,6 +2,7 @@ import PaymentMethodList from "./components/Payments/PaymentMethodList";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AddNewCard from "./components/Cards/AddNewCard";
+import ExistingCards from "./components/Cards/ExistingCards";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<PaymentMethodList />}></Route>
         <Route path="new-card" element={<AddNewCard />} />
+        <Route path="cards" element={<ExistingCards />} />
         {/* <Route path="/cards">
           <PaymentMethodList />
         </Route> */}
