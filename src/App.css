@@ -2,6 +2,59 @@
   text-align: center;
 }
 
+.loginWrapper{
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-form-container,
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container {
+padding: 5rem 8rem;
+border: 1px solid black;
+border-radius: 10px;
+margin: 2rem;
+}
+
+.loginWrapper label{
+  text-align: left;
+  padding: 0.23rem 0;
+}
+
+.loginWrapper input{
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 5px
+}
+
+.loginWrapper .submitBtn {
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+
+.loginWrapper .linkBtn {
+  border: none;
+  text-decoration: underline;
+  background: none;
+  color: black;
+  margin-top: 2rem;
+  cursor: pointer;
+
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
