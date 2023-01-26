@@ -1,11 +1,11 @@
 import React from "react";
 import Button from "../../UI/Button";
-import "./PaymentMethodList.css";
+import "./ChoosePaymentMethodList.css";
 import { icons } from "../../assets/index";
 import Card from "../../UI/Card";
 import { Link } from "react-router-dom";
 
-const PaymentMethodList = () => {
+const ChoosePaymentMethodList = () => {
   return (
     <section className="choose-payment ">
       <Card className="choose-payment__card container">
@@ -59,4 +59,4 @@ const PaymentMethodList = () => {
   );
 };
 
-export default PaymentMethodList;
+export default ChoosePaymentMethodList;
