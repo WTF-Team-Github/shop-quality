@@ -61,12 +61,11 @@ const AddNewCard = () => {
             id="setDefault"
           />
           <label className="add-card__check-label" htmlFor="setDefault">
-            {" "}
             Set as default Payment method
           </label>
         </div>
 
-        <Button className="add-card__btn"> Add New Card</Button>
+        <Button className="add-card__btn"> Create Card</Button>
       </Card>
     </section>
   );

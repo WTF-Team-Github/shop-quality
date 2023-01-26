@@ -1,11 +1,13 @@
 .add-card {
-    background-color: darkturquoise;
-    padding: 24px;
+    background: #000000;
+    width: 100vw;
+    height: 100vh;
+    padding: 50px 0px;
 }
 
 .add-card__card {
     background-color: #FFFFFF;
-    padding: 24px;
+    padding: 32px;
     width: 90%;
     margin: auto;
 }
