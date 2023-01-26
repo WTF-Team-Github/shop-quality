@@ -1,0 +1,41 @@
+.transfer__heading-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.transfer__heading {
+    font-size: 3rem;
+}
+
+.transfer-caveat {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+
+.accept-terms__div {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 25px;
+}
+
+.accept-terms__label {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.accept-terms__checkbox {
+    width: 50px;
+    height: 25px;
+}
+
+.transfer__list-item {
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    padding: 10px 0px 10px  ;
+    border-bottom: 1px solid #b2b2b2;
+    font-weight: 600;
+}
