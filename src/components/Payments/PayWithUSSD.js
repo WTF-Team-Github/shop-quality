@@ -4,7 +4,6 @@ import Modal from "../../UI/Modal/Modal";
 import "./PayWithUSSD.css";
 
 const PayWithUSSD = (props) => {
-    console.log(props.closeModal)
   return (
     <>
       <div className="ussd">
