@@ -1,15 +1,30 @@
 .add-card {
-    background: #000000;
+    background-image: url("../../assets/background-image.jpg");
+    background-position: center;
     width: 100vw;
     height: 100vh;
-    padding: 50px 0px;
+    padding: 5% 0px;
 }
 
 .add-card__card {
-    background-color: #FFFFFF;
+    width: 80%;
+  margin: auto;
+  background-color: #ffffff;
+  text-align: left;
+  padding: 32px;
+  /* display: flex;
+  flex-direction: column; */
+  /* justify-content: center;
+  align-items: center; */
+    /* background-color: #FFFFFF;
     padding: 32px;
     width: 90%;
-    margin: auto;
+    margin: auto; */
+}
+
+.add-card__heading{
+    font-size: 4rem;
+    margin-bottom: 30px;
 }
 
 .add-card__div {

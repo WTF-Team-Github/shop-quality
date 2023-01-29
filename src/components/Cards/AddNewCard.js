@@ -37,6 +37,9 @@ const AddNewCard = () => {
   return (
     <section className="add-card ">
       <Card className="add-card__card">
+        {/* need an arrow back icon to go to previous page */}
+
+        <h3 className="add-card__heading"> Add New Card</h3>
         {inputDetails.map((detail, id) => (
           <div className="add-card__div">
             <Input
