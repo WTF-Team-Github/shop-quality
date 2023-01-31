@@ -1,7 +1,9 @@
+import React from "react";
 import "./Input.css";
 import { icons } from "../assets";
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
+  // console.log(ref);
   const flexLabel = props.icon && "input-label-flex";
   return (
     <>
@@ -11,6 +13,7 @@ const Input = (props) => {
       </label>
 
       <input
+        ref={ref}
         id={props.id}
         placeholder={props.placeholder}
         type={props.type}
@@ -20,6 +23,5 @@ const Input = (props) => {
       />
     </>
   );
-};
-
+});
 export default Input;
