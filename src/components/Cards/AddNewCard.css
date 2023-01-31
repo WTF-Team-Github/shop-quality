@@ -2,20 +2,21 @@
     background-image: url("../../assets/background-image.jpg");
     background-position: center;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     padding: 5% 0px;
 }
 
 .add-card__card {
     width: 80%;
-  margin: auto;
-  background-color: #ffffff;
-  text-align: left;
-  padding: 32px;
+    height:auto;
+    margin: auto;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 32px;
 
 }
 
-.add-card__heading{
+.add-card__heading {
     font-size: 4rem;
     margin-bottom: 30px;
 }
