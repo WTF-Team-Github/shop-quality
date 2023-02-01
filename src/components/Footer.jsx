@@ -8,14 +8,14 @@ function Footer() {
       <div className='footer'>
         <div className='main'>
           <div className='footnote'>
-            <h3>FOLLOW US</h3>
+            <h3 className='follow'>FOLLOW US</h3>
             <ul className='list fa'>
               <li><a className='link_list' href='./'> <FaTwitter/> </a> </li>
               <li><a className='link_list ' href='./'> <FaFacebookF/> </a></li>
               <li><a className='link_list ' href='./'> <FaGithub/> </a></li>
             </ul>
           </div>
-          <div className='footnote'>
+          <div className='footnote contacts'>
             <h3>CONTACTS</h3>
             <ul className="list">
               <li>Phone: +2348004005000</li>
@@ -23,7 +23,7 @@ function Footer() {
               <li>Address: 124, WTF road, Teams city, Nigeria.</li>  
             </ul>
           </div>
-          <div className="footnote">
+          <div className="footnote news">
             <h3>RECENT NEWS</h3>
             <ul className="list">
               <li><a className='link_list' href='/'>About us</a></li>

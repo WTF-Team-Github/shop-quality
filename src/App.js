@@ -1,12 +1,12 @@
-import Footer from "./components/Footer"
+import Homepage from "./components/Homepage"
 
 function App() {
   return (
     <>
     <div>
-      
+      This is a test
     </div>
-    <Footer/>
+    <Homepage/>
     </>
   )
 }
