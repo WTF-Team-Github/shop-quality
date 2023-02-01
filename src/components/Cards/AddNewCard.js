@@ -4,10 +4,11 @@ import "./AddNewCard.css";
 import Card from "../../UI/Card";
 import Button from "../../UI/Button";
 import { defaultFormState, formReducer } from "./FormReducer";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AddNewCard = () => {
   const [formState, dispatchForm] = useReducer(formReducer, defaultFormState);
-
+  const navigate = useNavigate();
   const inputDetails = [
     {
       dispatchType: "FULL_NAME",
@@ -53,30 +54,41 @@ const AddNewCard = () => {
     // add a toggle?
   ];
 
-  const dispatchHandler = ({ type, ref }) => {
-    dispatchForm({ type, value: ref.current.value });
+  const dispatchHandler = ({ dispatchType, ref }) => {
+    dispatchForm({ type: dispatchType, value: ref.current.value });
   };
 
   function submitHandler(e) {
     e.preventDefault();
-    inputDetails.forEach((detail) => dispatchHandler(detail));
+
+    inputDetails.forEach((detail) => {
+      dispatchHandler(detail);
+    });
 
     // make cardDetails available outside submitHandler
+
     if (formState.isValid) {
       const cardDetails = inputDetails.reduce((acc, curr) => {
         acc[curr.id] = curr.ref.current.value;
 
         return acc;
       }, {});
+      
+      // post card details to firebase..done
+      // use try catch? 
+      fetch("https://shop-quality-default-rtdb.firebaseio.com/cards.json", {
+        method: "POST",
+        body: JSON.stringify(cardDetails),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then(() => navigate("/", {replace: true}));
 
-      console.log("I am valid")
-    }
-    else console.log("I am invalid")
+      console.log("I am valid");
+    } else console.log("I am invalid");
 
     // clear input values
 
-    // post card details to firebase
-    // fetch()
   }
 
   return (
@@ -115,7 +127,10 @@ const AddNewCard = () => {
             />
           </div>
 
-          <Button className="add-card__btn"> Create Card</Button>
+          <Button type="submit" className="add-card__btn">
+            {" "}
+            Create Card
+          </Button>
         </form>
       </Card>
     </section>
