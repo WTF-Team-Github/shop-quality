@@ -1,4 +1,8 @@
+import AddToCartBtn from "./AddToCartBtn";
+import './ProductCard.css'
 const ProductCard = ({product}) => {
+    
+    
     const productImg = {
         width:"100%",
         height: "353px"
@@ -8,7 +12,7 @@ const ProductCard = ({product}) => {
             <div className="product-image">
                <img src={product.thumbnail} alt="" style={productImg}/>    
             </div>
-            <button className="add-cart-btn">ADD TO CART</button>
+            <AddToCartBtn key={product.id} product={product} />
             <div className="product-details">
                 <ul className="product-description">
                     <li className="product-category">{product.category}</li>
