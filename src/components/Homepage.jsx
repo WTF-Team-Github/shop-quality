@@ -1,12 +1,15 @@
-import React from 'react'
-import Footer from './Footer'
+import React from "react";
+// import Hero
+import Footer from "./Footer";
+import Hero from "./hero/Hero";
 
 function Homepage() {
   return (
     <div>
-      <Footer/>
+      <Hero />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default Homepage
+export default Homepage;
