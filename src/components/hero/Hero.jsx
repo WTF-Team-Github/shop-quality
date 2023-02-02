@@ -8,7 +8,7 @@ export default function Hero() {
         <button>Add to Cart</button>
       </div>
       <div className="hero-background">
-        <p>Photo of the day</p>
+        <p>Product of the day</p>
       </div>
     </div>
   );
