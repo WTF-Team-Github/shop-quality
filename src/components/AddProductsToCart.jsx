@@ -18,7 +18,6 @@ const AddProductsToCart = () => {
   
   const showCartProducts = (e) => {
     setShowCart(true)
-      
   }
 
 

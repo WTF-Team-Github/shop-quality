@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ProductContext from "../context/ProductContext";
 import './AddToCartBtn.css'
+
 
 
 
@@ -10,7 +11,7 @@ const AddToCartBtn = ({product}) => {
    // add to cart button handler
 
        const handleAddCartItems = (e) => {
-        addCartItems(product)  
+        addCartItems(product) 
      }
      
     return(

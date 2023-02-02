@@ -9,6 +9,9 @@ export const ProductProvider  = ({children}) => {
     const initialState = {
         products: [],
         cartProducts: {},
+        totalPrice: 0,
+    
+        
     }
 const [state, dispatch] = useReducer(ProductReducer, initialState)
    
@@ -41,13 +44,24 @@ function removeItemFromCart(cartProducts) {
         payload: cartProducts
     })
 } 
+//function to clear all cart items
+function clearCart() {
+    dispatch ({
+        type: 'CLEAR_CART',
+        payload: initialState
+    })
+}
+//function to show Cart when cart button is clicked
+
 
 
     return <ProductContext.Provider value ={{
         ...state,
         fetchProducts,
         addCartItems,
-        removeItemFromCart
+        removeItemFromCart,
+        clearCart,
+        
         }}>
           {children}
         </ProductContext.Provider>

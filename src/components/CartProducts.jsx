@@ -10,34 +10,42 @@ const CartProducts = () => {
         height: '100%'
 
     }
-    const {cartProducts, removeItemFromCart} = useContext(ProductContext)
+    const {cartProducts, removeItemFromCart, totalPrice, clearCart} = useContext(ProductContext)
     const [cartItems, setCartItems] = useState(Object.entries(cartProducts));
+    const [isClose, setisClose] = useState(true)
+
     
-     
+    
+    
 
     //function to close cart item div
-    const removeCartItem = (cartItems) => {
+    const handleCloseCart = (e) => {
+      setisClose(!isClose)
+      
+    }
+
+    //function to remove cartItem
+    const removeCartItem = (cartProducts) => {
       removeItemFromCart(cartProducts);
     }
-    //function to clear all cart items
-     const clearCart = () => {
-        setCartItems([]);
-     }
-    console.log(cartItems);
-    console.log(cartItems.length)
+    //clear cart handler function
+    const handleClearCart = (e) => {
+    setCartItems([]);
+    clearCart();
+    }
+     
+    
 
 
         
     
     return (
-        
-
-        <div className="cart-product">
-            <button className='close-btn'>
+        <div className={isClose ?'cart-product': 'hide-btn'}>
+            <button className='close-btn' onClick= {handleCloseCart}>
                 <img src={closeBtn} alt="close-btn" style= {closeBtnStyle}/>
             </button>
             {cartItems.map(cartItem => (
-               <div className='cart-items_container key= {cartItem[0]}'>
+               <div className='cart-items_container' key={cartItem[0]}>
                     <div className='cart-product_list'>
                         <div className='cart-product_description'>
                             <p className="cart-product_title">{cartItem[1].title}</p>
@@ -45,15 +53,15 @@ const CartProducts = () => {
                             <p className= "cart-product_qty">Qty:{cartItem[1].qty}</p>
                         </div>
                         <div className="cart-product-image">
-                            <img src={cartItem[1].thumbnail} alt='cart-product=image' width={100} height={80}/>
+                            <img src={cartItem[1].thumbnail} alt= {cartItem[1].title} width={100} height={80}/>
                         </div>
                     </div> 
                     <button onClick={removeCartItem} className='remove-cart_item'>Remove Item</button>
                 </div>
             )
             )}
-            <h3 className='total-price'>Total: $0</h3>
-            <button onClick= {clearCart}className='clear-cart'>Clear</button>
+            <h3 className='total-price'>Total: $ {totalPrice}</h3>
+            <button onClick= {handleClearCart}className='clear-cart'>Clear</button>
         </div>
     )
     

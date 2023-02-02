@@ -12,6 +12,9 @@
     width: 18px;
     height: 18px;
   }
+  .hide-btn {
+    display: none;
+  }
   .cart-items_container{
     border-bottom: 1px solid #c2c2c2;
     padding: 10px 0;
@@ -58,7 +61,7 @@
     padding: 12px 0;
 }
 .total-price {
-    font-weight: 400;
-    font-size: 29px;
-    color: #656565;
+  font-weight: 400;
+  font-size: 29px;
+  color: #656565;
 }
