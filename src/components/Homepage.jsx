@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import ProductListing from './ProductListing'
 import AddProductsToCart from './AddProductsToCart'
 import React from 'react'
-import Footer from './Footer'
+import Footer from './Footer/Footer'
 import NavBar from './Navbar'
 
 
