@@ -69,3 +69,10 @@
     gap: 10%;
     align-items: center;
 }
+
+.error-message{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 35px;
+    font-weight: 600;
+}

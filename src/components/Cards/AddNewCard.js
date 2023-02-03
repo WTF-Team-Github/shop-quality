@@ -6,12 +6,14 @@ import Button from "../../UI/Button";
 import { defaultFormState, formReducer } from "./FormReducer";
 import { useNavigate } from "react-router-dom";
 import { icons } from "../../assets";
+import Modal from "../../UI/Modal/Modal";
 
 const AddNewCard = () => {
-  const checkboxRef = useRef();
-  const navigate = useNavigate();
-
   const [formState, dispatchForm] = useReducer(formReducer, defaultFormState);
+  const [showModal, setShowModal] = useState(false);
+  const checkboxRef = useRef();
+
+  const navigate = useNavigate();
 
   const dispatchHandler = ({ dispatchType, ref }) => {
     dispatchForm({ type: dispatchType, value: ref.current.value });
@@ -26,7 +28,7 @@ const AddNewCard = () => {
       type: "text",
       ref: useRef(),
       min: 8,
-      max:25,
+      max: 25,
     },
     {
       dispatchType: "CARD_NUMBER",
@@ -36,9 +38,7 @@ const AddNewCard = () => {
       type: "text",
       ref: useRef(),
       min: 16,
-      max: 16,
     },
-    // check how to add space after 4 digits
     {
       dispatchType: "CVV",
       id: "cvv",
@@ -56,8 +56,6 @@ const AddNewCard = () => {
       description: "Enter the expiration date of the card",
       type: "date",
       ref: useRef(),
-      min: Date.now(),
-      max: "",
     },
     {
       dispatchType: "PASSWORD",
@@ -69,7 +67,6 @@ const AddNewCard = () => {
       min: 4,
       max: 4,
     },
-    // add a toggle?
   ];
 
   function submitHandler(e) {
@@ -79,7 +76,7 @@ const AddNewCard = () => {
       dispatchHandler(detail);
     });
 
-    // make cardDetails available outside submitHandler
+    setShowModal(true);
   }
 
   useEffect(() => {
@@ -97,16 +94,18 @@ const AddNewCard = () => {
 
       // post card details to firebase..done
       // use try catch?
-      fetch("https://shop-quality-default-rtdb.firebaseio.com/cards.json", {
-        method: "POST",
-        body: JSON.stringify(allCardDetails),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then(() => navigate("/", { replace: true }));
+      try {
+        fetch("https://shop-quality-default-rtdb.firebaseio.com/cards.json", {
+          method: "POST",
+          body: JSON.stringify(allCardDetails),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then(() => navigate("/", { replace: true }));
+        console.log(formState.isValid);
+      } catch (error) {}
     } else {
     }
-
     // clear input values
   }, [formState.isValid]);
 
@@ -123,13 +122,13 @@ const AddNewCard = () => {
             <div key={detail.id} className="add-card__div">
               <Input
                 input={{
-                  id: detail.id,
                   type: detail.type,
                   min: detail.min,
                   max: detail.max,
-                  ref: detail.ref,
                 }}
+                ref={detail.ref}
                 icon={detail.icon}
+                id={detail.id}
                 labelClassName={`add-card__label `}
                 inputClassName="add-card__input"
                 label={detail.label}
@@ -161,6 +160,16 @@ const AddNewCard = () => {
             
             */}
           </div>
+          {showModal && (
+            <Modal>
+              <img src={icons.close} alt=""/>
+              <p className="error-message">
+                {formState.isValid
+                  ? "Card added succesfully!"
+                  : "Invalid submission, please confirm input"}{" "}
+              </p>
+            </Modal>
+          )}
 
           <Button type="submit" className="add-card__btn">
             {" "}
