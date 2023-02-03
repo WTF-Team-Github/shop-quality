@@ -22,7 +22,7 @@ const AddProductsToCart = () => {
 
 
     return (
-        <>
+        <div className='cart-btn-div'>
           <button className="cart-btn" onClick={showCartProducts}>
             <img src={cartBtn} alt='cart-button' /> 
           </button>
@@ -34,9 +34,7 @@ const AddProductsToCart = () => {
             (<span className="cartproduct_count">{cartCount}</span>)
           }
           {showCart && (<CartProducts/>)}
-          
-        
-        </>
+        </div>
     )
 }
 
