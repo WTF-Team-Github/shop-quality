@@ -2,24 +2,34 @@
   background-image: url("../../assets/background-image.jpg");
   background-position: center;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   padding: 5% 0px;
 }
 
+
 .cards__card {
   width: 80%;
+  height: auto;
   margin: auto;
   background-color: #ffffff;
   text-align: left;
   padding: 32px;
   display: flex;
   flex-direction: column;
-  
 
 }
 
-.cards__atm {
-  margin-bottom: 10px;
+.cards__container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.cards-atm-div {
+  margin-bottom: 3%;
+  min-width: 50%;
+
 }
 
 .cards__card>* {
@@ -36,18 +46,23 @@
   text-align: right;
 }
 
-.select-card__div{
+.select-card__div {
   display: flex;
   align-items: center;
-  gap:5px;
+  margin-top: 2%;
+  gap: 5px;
 }
 
 .select-card__label {
   font-size: 32px;
-  font-weight: 500 ;
+  font-weight: 500;
 }
 
 .select-card__checkbox {
   width: 50px;
   height: 30px;
+}
+
+.no-card {
+  font-size: 4rem;
 }
