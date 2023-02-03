@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ATMCard } from "atm-card-react";
 import { icons } from "../../assets";
 import "./ExistingCards.css";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import { Link } from "react-router-dom";
+import { CardContextProvider } from "../../store/new-card-context";
+import CardContext from "../../store/new-card-context";
 
 const ExistingCards = () => {
   const [cards, setCards] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const ctx = useContext(CardContext);
 
+  // console.log(defaultCardId, setDefaultCard)
   let content = <p className="no-card"> No card added </p>;
   if (isLoading) {
     content = <p className="no-card"> Getting your cards ...</p>;
@@ -28,9 +32,6 @@ const ExistingCards = () => {
       const res = await fetch(
         "https://shop-quality-default-rtdb.firebaseio.com/cards.json"
       );
-
-      // console.log("res here");
-      // console.log(res);
 
       if (!res.ok || !res) {
         throw new Error("Something went wrong!");
@@ -67,13 +68,13 @@ const ExistingCards = () => {
               updateCard(data, idx);
               console.log(idx);
             }}
-            
-            year={card.expiry}
-            month={card.expiry}
+            year={new Date(card.expiry).getFullYear()}
+            month={new Date(card.expiry).getMonth() + 1}
             cvv={card.cvv}
             number={card.cardNumber.replaceAll("-", "")}
             holderName={card.fullName}
             lifted="true"
+            className="atm-card"
             bankLogo={
               <span>
                 <img src={icons.bankBuildingWhite} />
@@ -97,7 +98,11 @@ const ExistingCards = () => {
             <input
               className="select-card__checkbox"
               type="checkbox"
-              name=""
+              defaultChecked={card.id === ctx.defaultCardId}
+              onChange={() => {
+                ctx.setDefaultCard(card.id);
+                console.log(card.id);
+              }}
               // id={cardId}
             />
             <label className="select-card__label" htmlFor={""}>
@@ -109,10 +114,6 @@ const ExistingCards = () => {
     });
   }
 
-  const now = new Date();
-  const expiryYear = now.getFullYear() + 2;
-
-  const expiryMonth = now.getMonth() + 1;
   /**
    *
    */
@@ -139,17 +140,19 @@ const ExistingCards = () => {
   }
 
   return (
-    <section className="cards">
-      <Card className="cards__card">
-        <h3 className="cards__heading"> Your Payment Cards</h3>
+    <CardContextProvider>
+      <section className="cards">
+        <Card className="cards__card">
+          <h3 className="cards__heading"> Your Payment Cards</h3>
 
-        <div className="cards__container">{content}</div>
+          <div className="cards__container">{content}</div>
 
-        <Link to={"/new-card"}>
-          <Button className="add-card__btn"> Add New Card</Button>
-        </Link>
-      </Card>
-    </section>
+          <Link to={"/new-card"}>
+            <Button className="add-card__btn"> Add New Card</Button>
+          </Link>
+        </Card>
+      </section>
+    </CardContextProvider>
   );
 };
 
