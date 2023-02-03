@@ -8,7 +8,7 @@
 
 .add-card__card {
     width: 80%;
-    height:auto;
+    height: auto;
     margin: auto;
     background-color: #ffffff;
     text-align: left;
@@ -16,20 +16,27 @@
 
 }
 
+.add-card__icons {
+    width: 40px;
+}
+
 .add-card__heading {
     font-size: 4rem;
     margin-bottom: 30px;
+    display: inline-block;
+    margin-left: 15px ;
+
 }
 
 .add-card__div {
-    margin-bottom: 2%;
+    margin-bottom: 3%;
 }
 
 .add-card__label {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .add-card__btn {

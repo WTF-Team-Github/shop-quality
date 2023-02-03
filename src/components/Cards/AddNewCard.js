@@ -1,14 +1,23 @@
-import React, { useReducer, useRef, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import Input from "../../UI/Input";
 import "./AddNewCard.css";
 import Card from "../../UI/Card";
 import Button from "../../UI/Button";
 import { defaultFormState, formReducer } from "./FormReducer";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { icons } from "../../assets";
 
 const AddNewCard = () => {
   const [formState, dispatchForm] = useReducer(formReducer, defaultFormState);
   const navigate = useNavigate();
+
+  const [formState, dispatchForm] = useReducer(formReducer, defaultFormState);
+  console.log(formState);
+
+  const dispatchHandler = ({ dispatchType, ref }) => {
+    dispatchForm({ type: dispatchType, value: ref.current.value });
+  };
+
   const inputDetails = [
     {
       dispatchType: "FULL_NAME",
@@ -54,10 +63,6 @@ const AddNewCard = () => {
     // add a toggle?
   ];
 
-  const dispatchHandler = ({ dispatchType, ref }) => {
-    dispatchForm({ type: dispatchType, value: ref.current.value });
-  };
-
   function submitHandler(e) {
     e.preventDefault();
 
@@ -66,43 +71,48 @@ const AddNewCard = () => {
     });
 
     // make cardDetails available outside submitHandler
+  }
 
+  useEffect(() => {
     if (formState.isValid) {
-      const cardDetails = inputDetails.reduce((acc, curr) => {
+      const cardInputDetails = inputDetails.reduce((acc, curr) => {
         acc[curr.id] = curr.ref.current.value;
 
         return acc;
       }, {});
-      
+
+      const allCardDetails = {
+        ...cardInputDetails,
+        default: checkboxRef.current.value,
+      };
+
       // post card details to firebase..done
-      // use try catch? 
+      // use try catch?
       fetch("https://shop-quality-default-rtdb.firebaseio.com/cards.json", {
         method: "POST",
-        body: JSON.stringify(cardDetails),
+        body: JSON.stringify(allCardDetails),
         headers: {
           "Content-Type": "application/json",
         },
-      }).then(() => navigate("/", {replace: true}));
-
-      console.log("I am valid");
-    } else console.log("I am invalid");
+      }).then(() => navigate("/", { replace: true }));
+    } else {
+    }
 
     // clear input values
-
-  }
+  }, [formState.isValid]);
 
   return (
     <section className="add-card ">
       <Card className="add-card__card">
-        {/* need an arrow back icon to go to previous page */}
-
-        <h3 className="add-card__heading"> Add New Card</h3>
+        <div>
+          <img className="add-card__icons" src={icons.arrowLeft} alt="" />
+          <h3 className="add-card__heading"> Add New Card</h3>
+        </div>
 
         <form onSubmit={submitHandler}>
           {inputDetails.map((detail) => (
-            <div className="add-card__div">
+            <div key={detail.id} className="add-card__div">
               <Input
-                key={detail.id}
                 icon={detail.icon}
                 className={""}
                 labelClassName={`add-card__label `}
@@ -121,10 +131,20 @@ const AddNewCard = () => {
               Set as default Payment method
             </label>
             <input
+              // need to change this to onCheck
+              onChange={() =>
+                dispatchForm({ type: "DEFAULT_CARD", value: true })
+              }
               className="add-card__checkbox"
               type="checkbox"
               id="setDefault"
+              ref={checkboxRef}
             />
+
+            {/* I need to add something that says if this is clicked, add a default property, value is yes, set to no for other cards
+            
+            
+            */}
           </div>
 
           <Button type="submit" className="add-card__btn">
