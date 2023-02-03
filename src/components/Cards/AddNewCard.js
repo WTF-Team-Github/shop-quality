@@ -8,11 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { icons } from "../../assets";
 
 const AddNewCard = () => {
-  const [formState, dispatchForm] = useReducer(formReducer, defaultFormState);
+  const checkboxRef = useRef();
   const navigate = useNavigate();
 
   const [formState, dispatchForm] = useReducer(formReducer, defaultFormState);
-  console.log(formState);
 
   const dispatchHandler = ({ dispatchType, ref }) => {
     dispatchForm({ type: dispatchType, value: ref.current.value });
@@ -26,6 +25,8 @@ const AddNewCard = () => {
       description: "Enter the name on the card",
       type: "text",
       ref: useRef(),
+      min: 8,
+      max:25,
     },
     {
       dispatchType: "CARD_NUMBER",
@@ -34,6 +35,8 @@ const AddNewCard = () => {
       description: "Enter the 16-digit-card number on the card",
       type: "text",
       ref: useRef(),
+      min: 16,
+      max: 16,
     },
     // check how to add space after 4 digits
     {
@@ -43,6 +46,8 @@ const AddNewCard = () => {
       description: "Enter the 3 digit number at the back of the card",
       type: "text",
       ref: useRef(),
+      min: 3,
+      max: 3,
     },
     {
       dispatchType: "EXPIRY",
@@ -51,6 +56,8 @@ const AddNewCard = () => {
       description: "Enter the expiration date of the card",
       type: "date",
       ref: useRef(),
+      min: Date.now(),
+      max: "",
     },
     {
       dispatchType: "PASSWORD",
@@ -59,6 +66,8 @@ const AddNewCard = () => {
       description: "Enter your card password",
       type: "password",
       ref: useRef(),
+      min: 4,
+      max: 4,
     },
     // add a toggle?
   ];
@@ -83,7 +92,7 @@ const AddNewCard = () => {
 
       const allCardDetails = {
         ...cardInputDetails,
-        default: checkboxRef.current.value,
+        default: checkboxRef.current.checked,
       };
 
       // post card details to firebase..done
@@ -113,15 +122,18 @@ const AddNewCard = () => {
           {inputDetails.map((detail) => (
             <div key={detail.id} className="add-card__div">
               <Input
+                input={{
+                  id: detail.id,
+                  type: detail.type,
+                  min: detail.min,
+                  max: detail.max,
+                  ref: detail.ref,
+                }}
                 icon={detail.icon}
-                className={""}
                 labelClassName={`add-card__label `}
                 inputClassName="add-card__input"
-                id={detail.id}
                 label={detail.label}
-                type={detail.type}
                 description={detail.description}
-                ref={detail.ref}
               />
             </div>
           ))}
@@ -133,7 +145,10 @@ const AddNewCard = () => {
             <input
               // need to change this to onCheck
               onChange={() =>
-                dispatchForm({ type: "DEFAULT_CARD", value: true })
+                dispatchForm({
+                  type: "DEFAULT_CARD",
+                  value: checkboxRef.current.checked,
+                })
               }
               className="add-card__checkbox"
               type="checkbox"
