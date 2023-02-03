@@ -102,7 +102,6 @@ const AddNewCard = () => {
             "Content-Type": "application/json",
           },
         }).then(() => navigate("/", { replace: true }));
-        console.log(formState.isValid);
       } catch (error) {}
     } else {
     }
