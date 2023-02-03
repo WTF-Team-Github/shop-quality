@@ -1,37 +1,33 @@
 import React from "react";
 
 export const defaultFormState = {
-  numbervalue:"",
-  nameValue:"",
-  expiryValue:"",
-  passwordValue:"",
-  cvvValue:"",
-
+  numberValue: "",
+  nameValue: "",
+  expiryValue: "",
+  passwordValue: "",
+  cvvValue: "",
+  default: false,
 
   // value:{},
   // or should this be emailIsValid: false, or can any of the other cases update this isValid?
-// I'll leave it for now
-  isValid: false,
-
+  // I'll leave it for now
+  isValid: null,
 };
 
 export const formReducer = (state, action) => {
   switch (action.type) {
-    case "CARD_NUMBER":
-      return {
-        ...state,
-        numberValue: action.value,
-        value: action.value, 
-        isValid: action.value > 16,
-      };
-
     case "FULL_NAME":
       return {
         ...state,
         nameValue: action.value,
+        isValid: action.value.trim().length >= 8,
+      };
 
-
-        isValid: action.value.trim().length >= 10,
+    case "CARD_NUMBER":
+      return {
+        ...state,
+        numberValue: action.value.replaceAll("-", ""),
+        isValid: action.value.replaceAll("-", "").trim().length === 16,
       };
 
     case "CVV":
@@ -48,6 +44,11 @@ export const formReducer = (state, action) => {
         isValid: action.value.trim().length === 4,
       };
 
+    case "DEFAULT_CARD":
+      return {
+        ...state,
+        default: action.value,
+      };
     default:
       return state;
   }
