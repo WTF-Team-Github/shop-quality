@@ -1,12 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-}
 body{
     min-height: 100vh;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .add-cart-btn {
+    width: 100%;
+    height: 46px;
+    background-color: #000;
+    color:#fff;
+    font-size: 20px;
+  }
 
 .footer {
    height: fit-content;
