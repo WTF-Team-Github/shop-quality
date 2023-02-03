@@ -4,8 +4,25 @@ import "./ChoosePaymentMethodList.css";
 import { icons } from "../../assets/index";
 import Card from "../../UI/Card";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import PayWithUSSD from "./PayWithUSSD";
 
 const ChoosePaymentMethodList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  console.log(isModalOpen);
+
+  function openModal(e) {
+    e.preventDefault();
+    setIsModalOpen(true);
+  }
+
+  function closeModal(e) {
+    e.preventDefault();
+    setIsModalOpen(false);
+
+  }
+
   return (
     <section className="choose-payment ">
       <Card className="choose-payment__card container">
@@ -25,7 +42,7 @@ const ChoosePaymentMethodList = () => {
               <li className="choose-payment__list-item">Card</li>
             </Link>
 
-            <a className="choose-payment__link" href="">
+            <a onClick={openModal} className="choose-payment__link" href="">
               <img
                 className="choose-payment__icons"
                 src={icons.phoneDial}
@@ -34,6 +51,7 @@ const ChoosePaymentMethodList = () => {
               <li className="choose-payment__list-item">USSD Transfer</li>
             </a>
 
+            {isModalOpen && <PayWithUSSD closeModal={closeModal} />}
             <a className="choose-payment__link" href="">
               <img
                 className="choose-payment__icons"
