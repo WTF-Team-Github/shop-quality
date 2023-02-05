@@ -1,26 +1,42 @@
 .add-card {
-    background: #000000;
+    background-image: url("../../assets/background-image.jpg");
+    background-position: center;
     width: 100vw;
-    height: 100vh;
-    padding: 50px 0px;
+    height: 100%;
+    padding: 5% 0px;
 }
 
 .add-card__card {
-    background-color: #FFFFFF;
-    padding: 32px;
-    width: 90%;
+    width: 80%;
+    height: auto;
     margin: auto;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 32px;
+
+}
+
+.add-card__icons {
+    width: 40px;
+}
+
+.add-card__heading {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    display: inline-block;
+    margin-left: 15px ;
+
 }
 
 .add-card__div {
-    margin-bottom: 2%;
+    margin-bottom: 3%;
 }
 
 .add-card__label {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .add-card__btn {

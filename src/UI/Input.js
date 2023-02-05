@@ -1,8 +1,15 @@
+import React from "react";
 import "./Input.css";
 import { icons } from "../assets";
 
-const Input = (props) => {
-  const flexLabel = props.icon && "input-label-flex";
+const Input = React.forwardRef((props, ref) => {
+  // console.log(ref);
+  function addHyphen() {
+    let element = ref.current.value.split("-").join("");
+    let finalValue = element.match(/.{1,4}/g).join("-");
+    ref.current.value = finalValue;
+  }
+
   return (
     <>
       <label className={`flexLabel ${props.labelClassName}`} htmlFor={props.id}>
@@ -11,15 +18,13 @@ const Input = (props) => {
       </label>
 
       <input
-        id={props.id}
+        {...props.input}
         placeholder={props.placeholder}
-        type={props.type}
-        onChange={props.onChange}
+        onChange={props.id === "cardNumber" ? addHyphen : props.onChange}
         className={`${props.inputClassName} ${"input"}`}
         disabled={props.isDisabled}
       />
     </>
   );
-};
-
+});
 export default Input;
