@@ -7,17 +7,19 @@ import './AddProductsToCart.css'
 
 const AddProductsToCart = () => {
 
-  const {cartProducts} = useContext(ProductContext)
-  const [showCart, setShowCart] = useState(false);
+  const {cartProducts,showCartItem,toShowCart} = useContext(ProductContext)
+  //const [showCart, setShowCart] = useState(false);
    
-   let cartCount = 0;
-    for (const [key, value] of Object.entries(cartProducts)) {
-      cartCount = cartCount + cartProducts[key].qty
-    }
+   //let cartCount = 2;
+    //for (const [key, value] of Object.entries(cartProducts)) {
+      //cartCount = cartCount + cartProducts[key].qty
+    //}
+  
   
   
   const showCartProducts = (e) => {
-    setShowCart(true)
+    //setShowCart(true)
+    toShowCart();
   }
 
 
@@ -27,13 +29,13 @@ const AddProductsToCart = () => {
             <img src={cartBtn} alt='cart-button' /> 
           </button>
 
-          {cartCount === 0 && 
+          {cartProducts.length === 0 && 
               (<span></span>)
           }
-          {cartCount > 0 &&
-            (<span className="cartproduct_count">{cartCount}</span>)
+          {cartProducts.length > 0 &&
+            (<span className="cartproduct_count">{cartProducts.length}</span>)
           }
-          {showCart && (<CartProducts/>)}
+          {showCartItem && (<CartProducts/>)}
         </div>
     )
 }
