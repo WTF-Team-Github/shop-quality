@@ -19,6 +19,11 @@ const AddNewCard = () => {
     dispatchForm({ type: dispatchType, value: ref.current.value });
   };
 
+  function closeModal(e) {
+    e.preventDefault();
+    setShowModal(false);
+  }
+
   const inputDetails = [
     {
       dispatchType: "FULL_NAME",
@@ -128,7 +133,7 @@ const AddNewCard = () => {
                 ref={detail.ref}
                 icon={detail.icon}
                 id={detail.id}
-                labelClassName={`add-card__label `}
+                labelClassName="add-card__label"
                 inputClassName="add-card__input"
                 label={detail.label}
                 description={detail.description}
@@ -160,8 +165,8 @@ const AddNewCard = () => {
             */}
           </div>
           {showModal && (
-            <Modal>
-              <img src={icons.close} alt=""/>
+            <Modal onClose={closeModal}>
+              <img onClick={closeModal} src={icons.close} />
               <p className="error-message">
                 {formState.isValid
                   ? "Card added succesfully!"
@@ -171,7 +176,6 @@ const AddNewCard = () => {
           )}
 
           <Button type="submit" className="add-card__btn">
-            {" "}
             Create Card
           </Button>
         </form>
