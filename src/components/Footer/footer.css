@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-height: 100vh;
+}
+
+.footer {
+   height: 150px;
+   width: 100vw;
+   background-color: rgba(0, 0, 0, 0.5);
+   color: whitesmoke;
+   position: fixed;
+   bottom: 0;
+   line-height: 1.5;
+   text-align: center;
+}
+
+.main{
+    display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 2em;
+   
+}
+.footnote {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.link_list {
+    text-decoration: none;
+    color: inherit;
+}
+.list {
+    list-style-type: none;
+    
+}
+@media (max-width: 768px) {
+    .footer{
+        position: fixed;
+        top: 50vh;
+        left: 0;
+        width: fit-content;
+        height: fit-content;
+        text-align: start;
+        padding: 0;
+    }
+    .news, .contacts, .year, .follow {
+        display: none;
+    }
+    
+}
