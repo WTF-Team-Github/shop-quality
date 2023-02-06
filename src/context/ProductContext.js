@@ -8,10 +8,8 @@ export const ProductProvider  = ({children}) => {
     //const [products, setProducts] = useState([]);
     const initialState = {
         products: [],
-        cartProducts: {},
-        totalPrice: 0,
-    
-        
+        cartProducts: [], 
+        showCartItem: false,  
     }
 const [state, dispatch] = useReducer(ProductReducer, initialState)
    
@@ -38,20 +36,41 @@ function addCartItems(product) {
     } 
 
     //function to remove individual cart items
-function removeItemFromCart(cartProducts) {
+function removeItemFromCart(product) {
     dispatch({
         type: 'REMOVE_FROM_CART',
-        payload: cartProducts
+        payload: product,
     })
 } 
-//function to clear all cart items
-function clearCart() {
-    dispatch ({
-        type: 'CLEAR_CART',
-        payload: initialState
+
+//function to show Cart when cart button is clicked 
+function toShowCart() {
+    dispatch({
+        type: 'SHOW_CART_ITEM',
+    })
+} 
+
+//function to hide Cart when cart button is clicked 
+function toHideCart() {
+    dispatch({
+        type: 'HIDE_CART_ITEM',
+    })
+} 
+
+//function to increment cart-items
+function incrementCartItem(item){
+    dispatch({
+        type:'INCREASE_CART_ITEM',
+        payload:item
     })
 }
-//function to show Cart when cart button is clicked
+
+function decrementCartItem(item){
+    dispatch({
+        type:'DECREMENT_CART_ITEM',
+        payload:item
+    })
+}
 
 
 
@@ -60,7 +79,10 @@ function clearCart() {
         fetchProducts,
         addCartItems,
         removeItemFromCart,
-        clearCart,
+        toShowCart,
+        toHideCart,
+        incrementCartItem,
+        decrementCartItem,
         
         }}>
           {children}
