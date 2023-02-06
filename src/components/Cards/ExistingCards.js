@@ -5,7 +5,6 @@ import "./ExistingCards.css";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import { Link } from "react-router-dom";
-import { CardContextProvider } from "../../store/new-card-context";
 import CardContext from "../../store/new-card-context";
 
 const ExistingCards = () => {
@@ -14,8 +13,8 @@ const ExistingCards = () => {
   const [isLoading, setIsLoading] = useState(false);
   const ctx = useContext(CardContext);
 
-  // console.log(defaultCardId, setDefaultCard)
   let content = <p className="no-card"> No card added </p>;
+
   if (isLoading) {
     content = <p className="no-card"> Getting your cards ...</p>;
   }
@@ -33,10 +32,6 @@ const ExistingCards = () => {
         "https://shop-quality-default-rtdb.firebaseio.com/cards.json"
       );
 
-      if (!res.ok || !res) {
-        throw new Error("Something went wrong!");
-      }
-
       const data = await res.json();
 
       for (const key in data) {
@@ -49,7 +44,9 @@ const ExistingCards = () => {
 
       setCards(allCards);
     } catch (error) {
-      console.log(error.message);
+      if (error.message === "Failed to fetch") {
+        error.message = "Something went wrong";
+      }
       setErrorMessage(error.message);
     }
     setIsLoading(false);
@@ -66,7 +63,6 @@ const ExistingCards = () => {
           <ATMCard
             onChange={(data, idx) => {
               updateCard(data, idx);
-              console.log(idx);
             }}
             year={new Date(card.expiry).getFullYear()}
             month={new Date(card.expiry).getMonth() + 1}
@@ -140,19 +136,17 @@ const ExistingCards = () => {
   }
 
   return (
-    <CardContextProvider>
-      <section className="cards">
-        <Card className="cards__card">
-          <h3 className="cards__heading"> Your Payment Cards</h3>
+    <section className="cards">
+      <Card className="cards__card">
+        <h3 className="cards__heading"> Your Payment Cards</h3>
 
-          <div className="cards__container">{content}</div>
+        <div className="cards__container">{content}</div>
 
-          <Link to={"/new-card"}>
-            <Button className="add-card__btn"> Add New Card</Button>
-          </Link>
-        </Card>
-      </section>
-    </CardContextProvider>
+        <Link to={"/new-card"}>
+          <Button className="add-card__btn"> Add New Card</Button>
+        </Link>
+      </Card>
+    </section>
   );
 };
 
