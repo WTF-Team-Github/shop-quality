@@ -1,55 +1,54 @@
 .add-card {
-    background: #000000;
-    width: 100vw;
-    height: 100vh;
-    padding: 50px 0px;
+  background: #000000;
+  width: 100vw;
+  height: 100vh;
+  padding: 50px 0px;
 }
 
 .add-card__card {
-    background-color: #FFFFFF;
-    padding: 32px;
-    width: 90%;
-    margin: auto;
+  background-color: #ffffff;
+  padding: 32px;
+  width: 90%;
+  margin: auto;
 }
 
 .add-card__div {
-    margin-bottom: 2%;
+  margin-bottom: 2%;
 }
 
 .add-card__label {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
 .add-card__btn {
-    margin-top: 10%;
-    font-size: 2rem;
-    background-color: #000000;
-    padding: 16px;
-    border-radius: 5px;
-    color: #FFFFFF;
+  margin-top: 10%;
+  font-size: 2rem;
+  background-color: #000000;
+  padding: 16px;
+  border-radius: 5px;
+  color: #ffffff;
 }
 
 .add-card__check-div {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .add-card__check-label {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .add-card__checkbox {
-    height: 30px;
-    width: 30px;
+  height: 30px;
+  width: 30px;
 }
 
 .flex {
-    display: flex;
-    gap: 10%;
-    align-items: center;
+  display: flex;
+  gap: 10%;
+  align-items: center;
 }

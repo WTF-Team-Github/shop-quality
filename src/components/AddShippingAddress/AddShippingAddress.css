@@ -1,0 +1,60 @@
+.shippingAdd {
+  background-image: url("../../assets/background-image.jpg");
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 5% 0px;
+}
+
+.shippingAdd-Container {
+  width: 90%;
+  margin: auto;
+  background-color: #ffffff;
+  text-align: left;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.shippingAdd-header {
+  display: flex;
+  width: 750px;
+  justify-content: space-between;
+}
+
+.shippingAdd-header > :nth-child(1) {
+  height: 40px;
+  width: 40px;
+  padding-top: 12px;
+}
+
+.shippingAdd-header > :nth-child(2) {
+  padding-top: 6px;
+  font-size: 3.5rem;
+}
+
+.shippingAdd-form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.shippingAdd-form > label {
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+.shippingAdd > input {
+  padding: 30px;
+}
+
+.shippingAdd-btn {
+  margin-top: 10px;
+  font-size: 2rem;
+  background-color: #000000;
+  padding: 16px;
+  border-radius: 5px;
+  color: #ffffff;
+  width: 400px;
+  height: 80px;
+}

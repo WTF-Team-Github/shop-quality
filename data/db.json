@@ -1,0 +1,20 @@
+{
+  "shipping-add": [
+    {
+      "fullname": "Oyenuga Oluwaseun",
+      "address": "16 Agbede-Trasformer Ikorodu Lagos.",
+      "country": "Nigeria",
+      "state": "Select One",
+      "zip": "104101",
+      "id": 1
+    },
+    {
+      "fullname": "Oyenuga Oluwaseun",
+      "address": "16 Agbede-Trasformer Ikorodu Lagos.",
+      "country": "Nigeria",
+      "state": "Select One",
+      "zip": "104101",
+      "id": 2
+    }
+  ]
+}

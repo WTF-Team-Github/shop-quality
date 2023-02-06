@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap");
+
+.checkout {
+  background-image: url("../../assets/background-image.jpg");
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 5% 0px;
+}
+
+.checkout-container {
+  width: 90%;
+  background-color: #ffffffc9;
+  text-align: left;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-header {
+  display: flex;
+  width: 350px;
+  justify-content: space-between;
+}
+.checkout-header > :nth-child(1) {
+  padding-top: 6px;
+  font-size: 3.5rem;
+}
+
+.checkout-header > :nth-child(2) {
+  padding-top: 6px;
+  font-size: 3.5rem;
+}
+
+.checkoutList {
+  background-color: white;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  padding-left: 20px;
+  width: 700px;
+  height: 100px;
+  padding: 10px;
+}
+
+.checkoutList > p {
+  margin-bottom: 10px;
+}
+
+.checkoutList-span {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+}
+
+.checkoutList-span > p {
+  font-weight: 500;
+}
+
+.btn {
+  width: 70px;
+  height: 25px;
+  border-radius: 10px;
+  border: 1px solid #ffffffc9;
+  cursor: pointer;
+}
+
+.checkout-btn {
+  border: 1px solid #ffffffc9;
+}
+.checkoutList :hover {
+  cursor: pointer;
+}
+
+.select-address {
+  display: flex;
+  flex-direction: row;
+}
+
+.payment {
+  display: flex;
+  justify-content: space-between;
+  width: 510px;
+  margin-top: 20px;
+}
+
+.payment-btn {
+  border: 1px solid #ffffffc9;
+  background-color: black;
+  color: white;
+  margin-top: 20px;
+}
+
+.payment-card {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
+
+.payment-card > span {
+  width: 80px;
+  height: 50px;
+  background-color: azure;
+  border-radius: 10px;
+}
+
+.delivery {
+  margin-top: 20px;
+}
+.delivery-cards {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
+.delivery-cards > span {
+  display: flex;
+  width: 120px;
+  height: 70px;
+  background-color: azure;
+  border-radius: 10px;
+  flex-direction: column;
+}
+.card-title {
+  font-family: "Ruslan Display", cursive;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.card-detail {
+  font-size: x-small;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.ordered-item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  margin-bottom: 10px;
+}
+
+.delivery-btn {
+  width: 200px;
+  height: 30px;
+  background-color: black;
+  color: white;
+}
