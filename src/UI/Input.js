@@ -18,11 +18,12 @@ const Input = React.forwardRef((props, ref) => {
       </label>
 
       <input
-        {...props.input}
-        placeholder={props.placeholder}
         onChange={props.id === "cardNumber" ? addHyphen : props.onChange}
+        ref={ref}
+        placeholder={props.placeholder}
         className={`${props.inputClassName} ${"input"}`}
         disabled={props.isDisabled}
+        {...props.input}
       />
     </>
   );

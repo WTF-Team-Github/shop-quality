@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ATMCard } from "atm-card-react";
 import { icons } from "../../assets";
 import "./ExistingCards.css";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import { Link } from "react-router-dom";
+import CardContext from "../../store/new-card-context";
 
 const ExistingCards = () => {
   const [cards, setCards] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const ctx = useContext(CardContext);
 
   let content = <p className="no-card"> No card added </p>;
+
   if (isLoading) {
     content = <p className="no-card"> Getting your cards ...</p>;
   }
@@ -29,13 +32,6 @@ const ExistingCards = () => {
         "https://shop-quality-default-rtdb.firebaseio.com/cards.json"
       );
 
-      // console.log("res here");
-      // console.log(res);
-
-      if (!res.ok || !res) {
-        throw new Error("Something went wrong!");
-      }
-
       const data = await res.json();
 
       for (const key in data) {
@@ -48,7 +44,9 @@ const ExistingCards = () => {
 
       setCards(allCards);
     } catch (error) {
-      console.log(error.message);
+      if (error.message === "Failed to fetch") {
+        error.message = "Something went wrong";
+      }
       setErrorMessage(error.message);
     }
     setIsLoading(false);
@@ -65,15 +63,14 @@ const ExistingCards = () => {
           <ATMCard
             onChange={(data, idx) => {
               updateCard(data, idx);
-              console.log(idx);
             }}
-            
-            year={card.expiry}
-            month={card.expiry}
+            year={new Date(card.expiry).getFullYear()}
+            month={new Date(card.expiry).getMonth() + 1}
             cvv={card.cvv}
             number={card.cardNumber.replaceAll("-", "")}
             holderName={card.fullName}
             lifted="true"
+            className="atm-card"
             bankLogo={
               <span>
                 <img src={icons.bankBuildingWhite} />
@@ -97,7 +94,11 @@ const ExistingCards = () => {
             <input
               className="select-card__checkbox"
               type="checkbox"
-              name=""
+              defaultChecked={card.id === ctx.defaultCardId}
+              onChange={() => {
+                ctx.setDefaultCard(card.id);
+                console.log(card.id);
+              }}
               // id={cardId}
             />
             <label className="select-card__label" htmlFor={""}>
@@ -109,10 +110,6 @@ const ExistingCards = () => {
     });
   }
 
-  const now = new Date();
-  const expiryYear = now.getFullYear() + 2;
-
-  const expiryMonth = now.getMonth() + 1;
   /**
    *
    */
