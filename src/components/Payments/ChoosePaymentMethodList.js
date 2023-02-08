@@ -7,21 +7,26 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import PayWithUSSD from "./PayWithUSSD";
 import PayWithBankTransfer from "./PayWithBankTransfer";
+import PayWithCash from "./PayWithCash";
 
 const ChoosePaymentMethodList = () => {
   const [showUSSDModal, setShowUSSDModal] = useState(false);
   const [showTransferModal, setShowTransferModal] = useState(false);
+  const [showCashModal, setShowCashModal] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   function openModal(e) {
     e.preventDefault();
     e.currentTarget.id === "USSD" && setShowUSSDModal(true);
     e.currentTarget.id === "transfer" && setShowTransferModal(true);
+    e.currentTarget.id === "cash" && setShowCashModal(true);
   }
 
   function closeModal(e) {
     e.preventDefault();
     setShowUSSDModal(false);
     setShowTransferModal(false);
+    setShowCashModal(false);
   }
 
   return (
@@ -75,7 +80,12 @@ const ChoosePaymentMethodList = () => {
               <PayWithBankTransfer closeModal={closeModal} />
             )}
 
-            <a className="choose-payment__link" href="">
+            <a
+              id="cash"
+              onClick={openModal}
+              className="choose-payment__link"
+              href=""
+            >
               <img
                 className="choose-payment__icons"
                 src={icons.payCash}
@@ -83,9 +93,13 @@ const ChoosePaymentMethodList = () => {
               />
               <li className="choose-payment__list-item">Cash on Delivery</li>
             </a>
+            {showCashModal && <PayWithCash closeModal={closeModal} />}
           </ul>
         </div>
-        <Button className="choose-payment__btn"> Add Payment Method</Button>
+        <Button isDisabled={isButtonDisabled} className="choose-payment__btn">
+          {" "}
+          Add Payment Method
+        </Button>
       </Card>
     </section>
   );

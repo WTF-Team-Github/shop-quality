@@ -1,16 +1,16 @@
-.cash_heading-div {
+.cash__heading-div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 40px;
 }
 
-.cash_heading {
-    font-size: 3.5rem;
+.cash__heading {
+    font-size: 3rem;
 }
 
 .cash-caveat {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 35px;
 }
 
@@ -32,10 +32,14 @@
     height: 25px;
 }
 
-.cash_list-item {
+.cash__list>*{
+    margin-bottom: 5px;
+}
+
+.cash__list-item {
     margin-bottom: 25px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 10px 0px 10px;
     border-bottom: 1px solid #b2b2b2;
-    font-weight: 600;
+    font-weight: 500;
 }

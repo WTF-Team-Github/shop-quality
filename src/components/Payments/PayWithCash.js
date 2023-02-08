@@ -10,14 +10,14 @@ const PayWithCash = (props) => {
     <div>
       <Modal>
         <div className="cash__heading-div">
-          <h3 className="cash__heading">Terns and Conditions </h3>
+          <h3 className="cash__heading">Terms and Conditions </h3>
           <button onClick={props.closeModal}>
             <img src={icons.close} alt="" />
           </button>
         </div>
         <p className="cash-caveat">
           By selecting the pay with cash option, you agree to the following
-          terms and condtionns
+          terms and condtions
         </p>
 
         <div>
