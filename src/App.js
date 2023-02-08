@@ -5,7 +5,6 @@ import Signup from "./components/Signup"
 import Homepage from "./components/Homepage"
 import ChoosePaymentMethodList from "./components/Payments/ChoosePaymentMethodList";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AddNewCard from "./components/Cards/AddNewCard";
 import ExistingCards from "./components/Cards/ExistingCards"
 
