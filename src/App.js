@@ -6,7 +6,11 @@ import ExistingCards from "./components/Cards/ExistingCards";
 import AddShippingAddress from "./components/AddShippingAddress/AddShippingAddress";
 import ShippingAddressList from "./components/ShippingAddressList/ShippingAddressList";
 import Checkout from "./components/Checkout/Checkout";
+import { useState } from "react";
 function App() {
+  const [activeAddress, setActiveAddress] = useState(null);
+  console.log(activeAddress);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -14,8 +18,14 @@ function App() {
         <Route path="new-card" element={<AddNewCard />} />
         <Route path="cards" element={<ExistingCards />} />
         <Route path="shipping-address" element={<AddShippingAddress />} />
-        <Route path="shipping-address-list" element={<ShippingAddressList />} />
-        <Route path="checkout" element={<Checkout />} />
+        <Route
+          path="shipping-address-list"
+          element={<ShippingAddressList setActiveAddress={setActiveAddress} />}
+        />
+        <Route
+          path="checkout"
+          element={<Checkout activeAddress={activeAddress} />}
+        />
 
         {/* <Route path="/cards">
           <ChoosePaymentMethodList />

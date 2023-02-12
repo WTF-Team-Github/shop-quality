@@ -15,6 +15,30 @@
       "state": "Select One",
       "zip": "104101",
       "id": 2
+    },
+    {
+      "fullname": "Oluwaseun Oyenuga",
+      "address": "16 Ikorodu Lagos.",
+      "country": "Nigeria",
+      "state": "Select One",
+      "zip": "104101",
+      "id": 3
+    },
+    {
+      "fullname": "Oluwaseun Oyenuga",
+      "address": "16 Agbede-Trasformer Ikorodu Lagos.",
+      "country": "togo",
+      "state": "Select One",
+      "zip": "104101",
+      "id": 4
+    },
+    {
+      "fullname": "Oyenuga Oluwaseun",
+      "address": "16 Agbede-Trasformer Ikorodu Lagos.",
+      "country": "us",
+      "state": "Select One",
+      "zip": "104101",
+      "id": 5
     }
   ]
 }

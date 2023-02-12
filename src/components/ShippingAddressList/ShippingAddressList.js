@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ShippingAddressList.css";
 import { icons } from "../../assets/index";
 
-const ShippingAddressList = () => {
+const ShippingAddressList = ({ setActiveAddress }) => {
   const [Address, setAddress] = useState(null);
   const [checkBoxValue, setCheckBoxValue] = useState(null);
-
+  const navigate = useNavigate();
   const url = "http://localhost:3000/shipping-add";
 
   useEffect(() => {
@@ -29,13 +29,14 @@ const ShippingAddressList = () => {
     <section className="shippingAddList">
       <div className="shippingAddList-Container">
         <div className="shippingAddList-header">
-          <Link to="/" className="shippingAddList-icon">
-            <img
-              className="choose-payment__icons"
-              src={icons.arrowLeft}
-              alt=""
-            />
-          </Link>
+          {/* <Link to="/" className="shippingAddList-icon"> */}
+          <img
+            onClick={() => navigate("/checkout")}
+            className="choose-payment__icons"
+            src={icons.arrowLeft}
+            alt=""
+          />
+          {/* </Link> */}
 
           <h2> Shipping Address</h2>
         </div>
@@ -62,7 +63,10 @@ const ShippingAddressList = () => {
                     id="1"
                     type="checkbox"
                     checked={checkBoxValue === address.id}
-                    onClick={() => setCheckBoxValue(address.id)}
+                    onClick={() => {
+                      setCheckBoxValue(address.id);
+                      setActiveAddress(address.id);
+                    }}
                   />
                   <label for="styled-checkbox-1">Use as shipping address</label>
                 </div>
