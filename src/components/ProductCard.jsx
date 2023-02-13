@@ -5,7 +5,8 @@ const ProductCard = ({product}) => {
     
     const productImg = {
         width:"100%",
-        height: "353px"
+        height: "353px",
+        padding:"10px"
     }
     return (
         <div className="product-card">

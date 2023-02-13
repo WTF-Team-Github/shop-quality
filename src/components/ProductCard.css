@@ -1,6 +1,7 @@
 .product-card {
     width: 282px;
-    border: 1px solid rgb(57, 48, 48);
+    background-color: #e4e4e4;
+    border-radius: 5px;
     
   }
   .product-image {
@@ -28,5 +29,9 @@
      font-size: 29px;
      line-height: 32px;
      color: #656565;
+   }
+   .product-description{
+    padding-left: 10px;
+    padding-top: 8px;
    }
    
