@@ -2,11 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .ussd__heading {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 
@@ -17,11 +17,11 @@
 
 .ussd__list-item>* {
     margin-bottom: 5px;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .ussd__list-item{
-    padding: 8px;;
+    padding: 5px;;
     border-bottom: 1px solid #b2b2b2;
 }
 
