@@ -1,25 +1,27 @@
 .choose-payment {
   background-image: url("../../assets/background-image.jpg");
   background-position: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   padding: 5% 0px;
 
   /* need to make this a common style */
 }
 
 .choose-payment__card {
-  width: 90%;
+  width: 80%;
+  height: 50%;
   margin: auto;
   background-color: #ffffff;
   text-align: left;
-  padding: 24px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
 }
 
 .choose-payment__heading {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin-bottom: 5%;
   margin-left: 13px;
   display: inline-block;
@@ -30,12 +32,17 @@ ul {
   margin: auto;
 }
 
+.choose-payment__div {
+  display: flex;
+  margin-bottom: 25px;
+  padding: 30px;
+  border-bottom: 1px solid #ebf0ff;
+}
+
 .choose-payment__link {
   display: flex;
   gap: 4%;
-  margin-bottom: 25px;
-  padding: 32px;
-  border-bottom: 1px solid #ebf0ff;
+  flex-basis: 50%;
   text-decoration: none;
   color: #000000;
 }
@@ -48,19 +55,28 @@ ul {
   width: 32px;
 }
 
+
+
 .choose-payment__list-item {
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+input[type=radio]{
+height:40px;
+background-color: #000000;
+
 }
 
 .choose-payment__btn {
-  margin-top: 20%;
-  font-size: 2rem;
-  background-color: #000000;
+  margin-top: 10%;
+  font-size: 1.5rem;
   padding: 16px;
   border-radius: 5px;
   color: #ffffff;
+  background-color: #000000;
 }
 
-.active {
-  background-color: black;
+.choose-payment__btn:disabled {
+  background-color: #B2B2B2;
+  border: none;
 }
