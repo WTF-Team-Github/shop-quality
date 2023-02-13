@@ -14,7 +14,7 @@ const ChoosePaymentMethodList = () => {
   const [showTransferModal, setShowTransferModal] = useState(false);
   const [showCashModal, setShowCashModal] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("")
   function openModal(e) {
     e.preventDefault();
     e.currentTarget.id === "USSD" && setShowUSSDModal(true);
@@ -33,6 +33,9 @@ const ChoosePaymentMethodList = () => {
     // console.log(e.current.value);
     // console.log(e.current.name);
     console.log(e.target.id);
+    setSelectedPaymentMethod(e.target.id)
+
+    setIsButtonDisabled(false)
   }
 
   return (
