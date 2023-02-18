@@ -1,0 +1,37 @@
+.product-card {
+    width: 282px;
+    background-color: #e4e4e4;
+    border-radius: 5px;
+    
+  }
+  .product-image {
+    margin-bottom: 0;
+  }
+  .product-description li {
+    list-style: none;
+   
+   }
+   .product-category {
+     font-weight: 700;
+     color: #656565;
+     font-size: 22px;
+     line-height: 24px;
+     text-transform: capitalize;
+   }
+   .product-title {
+     font-weight: 400;
+     font-size: 25px;
+     line-height: 37px;
+     padding: 13px 0;
+   }
+   .product-price {
+     
+     font-size: 29px;
+     line-height: 32px;
+     color: #656565;
+   }
+   .product-description{
+    padding-left: 10px;
+    padding-top: 8px;
+   }
+   

@@ -1,0 +1,31 @@
+.ussd__heading-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.ussd__heading {
+    font-size: 3rem;
+}
+
+
+.ussd__list>* {
+    margin-bottom: 25px;
+    
+}
+
+.ussd__list-item>* {
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.ussd__list-item{
+    padding: 8px;;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+.ussd__list-item>h5{
+    font-weight: 600;
+    margin-bottom: 5px;
+}

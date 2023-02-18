@@ -1,0 +1,6 @@
+.product-listing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 49px;
+    width: 70%;
+  }
