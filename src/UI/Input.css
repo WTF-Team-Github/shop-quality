@@ -1,9 +1,7 @@
 input {
-    padding: 25px;
-    font-size: 24px;
-    /* display: block; */
+    padding: 18px;
+    font-size: 1rem;
     width: 50%;
-    /* border: none; */
 }
 
 .input-label {
@@ -12,7 +10,7 @@ input {
 }
 
 .input-label-bold {
-    font-size: 36px;
+    font-size: 1.6rem;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0.5px;
@@ -21,7 +19,7 @@ input {
 
 .input-label-small {
     color: #9B9B9B;
-    font-size: 24px;
+    font-size: 1rem;
     font-weight: 600;
 }
 
