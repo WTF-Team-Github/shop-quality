@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState, useContext } from "react";
 import Input from "../../UI/Input";
 import "./AddNewCard.css";
 import Card from "../../UI/Card";
@@ -7,11 +7,14 @@ import { defaultFormState, formReducer } from "./FormReducer";
 import { useNavigate } from "react-router-dom";
 import { icons } from "../../assets";
 import Modal from "../../UI/Modal/Modal";
+import CardContext from "../../store/new-card-context";
 
 const AddNewCard = () => {
   const [formState, dispatchForm] = useReducer(formReducer, defaultFormState);
   const [showModal, setShowModal] = useState(false);
   const checkboxRef = useRef();
+  const ctx = useContext(CardContext);
+
 
   const navigate = useNavigate();
 
@@ -79,7 +82,16 @@ const AddNewCard = () => {
 
     inputDetails.forEach((detail) => {
       dispatchHandler(detail);
+      checkboxRef.current.checked &&
+        dispatchForm({
+          type: "DEFAULT_CARD",
+          value: checkboxRef.current.value,
+        });
+
     });
+
+  // omooo, what do i do ?
+    // ctx.setDefaultCard(card.id);
 
     setShowModal(true);
   }
@@ -103,14 +115,14 @@ const AddNewCard = () => {
         fetch("https://shop-quality-default-rtdb.firebaseio.com/cards.json", {
           method: "POST",
           body: JSON.stringify(allCardDetails),
-          headers: {
-            "Content-Type": "application/json",
-          },
+            headers: {
+              "Content-Type": "application/json",
+            },
         }).then(() => navigate("/", { replace: true }));
-      } catch (error) {}
+      } catch (error) { }
     } else {
     }
-    // clear input values
+    // clear input values...is there a need? cos the page reroutes and is therefore destroyed ? I think...  
   }, [formState.isValid]);
 
   return (
@@ -147,12 +159,7 @@ const AddNewCard = () => {
             </label>
             <input
               // need to change this to onCheck
-              onChange={() =>
-                dispatchForm({
-                  type: "DEFAULT_CARD",
-                  value: checkboxRef.current.checked,
-                })
-              }
+              // onChange={""}
               className="add-card__checkbox"
               type="checkbox"
               id="setDefault"
@@ -170,7 +177,7 @@ const AddNewCard = () => {
               <p className="error-message">
                 {formState.isValid
                   ? "Card added succesfully!"
-                  : "Invalid submission, please confirm input"}{" "}
+                  : "Invalid submission. Please fill in all input fields"}{" "}
               </p>
             </Modal>
           )}
