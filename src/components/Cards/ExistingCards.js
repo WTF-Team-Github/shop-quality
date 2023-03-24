@@ -27,7 +27,6 @@ const ExistingCards = () => {
     console.log("desired default");
     console.log(e.target.id);
 
-    // curl -X PATCH -d '{ "default": "true"}' "https://shop-quality-default-rtdb.firebaseio.com/cards/-NNLLRWOOFwFTCJinRb8.json"
     const res = await fetch(
       `https://shop-quality-default-rtdb.firebaseio.com/cards/${ctx.defaultCardId}.json`,
       {
@@ -55,8 +54,6 @@ const ExistingCards = () => {
         },
       }
     );
-
-    console.log(res1.json());
 
     ctx.setDefaultCard(e.target.id);
   }
@@ -93,6 +90,20 @@ const ExistingCards = () => {
   useEffect(() => {
     getCards();
   }, []);
+
+  function updateCard(data, idx) {
+    const newCards = [...cards];
+    const updatedObject = {
+      year: data.year,
+      month: data.month,
+      holderName: data.holderName,
+      cvv: data.cvv,
+      number: data.number,
+    };
+
+    newCards[idx] = updatedObject;
+    setCards(newCards);
+  }
 
   if (cards.length > 0) {
     content = cards.map((card, idx) => {
@@ -138,7 +149,6 @@ const ExistingCards = () => {
               onChange={(e) => {
                 changeDefaultCard(e);
               }}
-              // id={cardId}
             />
             <label className="select-card__label" htmlFor={""}>
               Use as default payment method
