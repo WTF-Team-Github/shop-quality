@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 const CardContext = createContext({
   defaultCardId: null,
@@ -8,9 +8,30 @@ const CardContext = createContext({
 export const CardContextProvider = (props) => {
   const [defaultCardId, setDefaultCardId] = useState(null);
 
-  function setDefaultCard(cardId) {
-    setDefaultCardId(cardId);
+  useEffect(() => {
+    async function getDefaultCardId() {
+      const res = await fetch(
+        "https://shop-quality-default-rtdb.firebaseio.com/cards.json"
+      );
+
+      const data = await res.json();
+
+      // console.log(data);
+      const defaultCardKey = Object.keys(data).filter((property) => {
+        // console.log(property);
+        return data[property].default === true;
+      })[0];
+
+      setDefaultCardId(defaultCardKey);
+    }
+
+    getDefaultCardId()
+  }, []);
+
+  async function setDefaultCard(cardId) {
+   setDefaultCardId(cardId)
   }
+
   return (
     <CardContext.Provider
       value={{
