@@ -23,6 +23,44 @@ const ExistingCards = () => {
     content = <p className="no-card"> {errorMessage}</p>;
   }
 
+  async function changeDefaultCard(e, cardId) {
+    console.log("desired default");
+    console.log(e.target.id);
+
+    // curl -X PATCH -d '{ "default": "true"}' "https://shop-quality-default-rtdb.firebaseio.com/cards/-NNLLRWOOFwFTCJinRb8.json"
+    const res = await fetch(
+      `https://shop-quality-default-rtdb.firebaseio.com/cards/${ctx.defaultCardId}.json`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          default: false,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log(res.json());
+
+    const res1 = await fetch(
+      `https://shop-quality-default-rtdb.firebaseio.com/cards/${e.target.id}.json`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          default: e.target.checked,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log(res1.json());
+
+    ctx.setDefaultCard(e.target.id);
+  }
+
   async function getCards() {
     const allCards = [];
     setIsLoading(true);
@@ -87,17 +125,18 @@ const ExistingCards = () => {
             }
             system={"mastercard"}
             hideDigits="true"
-            scale="2"
+            scale="1"
           />
 
           <div className="select-card__div">
             <input
+              id={card.id}
               className="select-card__checkbox"
-              type="checkbox"
-              defaultChecked={card.id === ctx.defaultCardId}
-              onChange={() => {
-                ctx.setDefaultCard(card.id);
-                console.log(card.id);
+              type="radio"
+              name="default-card"
+              defaultChecked={card.default}
+              onChange={(e) => {
+                changeDefaultCard(e);
               }}
               // id={cardId}
             />
@@ -108,31 +147,6 @@ const ExistingCards = () => {
         </div>
       );
     });
-  }
-
-  /**
-   *
-   */
-
-  // const [number, setNumber] = useState("5399456790894378");
-  // const [month, setMonth] = useState(expiryMonth);
-  // const [year, setYear] = useState(expiryYear);
-  // const [holder, setHolder] = useState("Deborah Animashaun");
-  // const [cvv, setCvv] = useState("456");
-  // const cardId = number.slice(number.length - 4);
-
-  function updateCard(data, idx) {
-    const newCards = [...cards];
-    const updatedObject = {
-      year: data.year,
-      month: data.month,
-      holderName: data.holderName,
-      cvv: data.cvv,
-      number: data.number,
-    };
-
-    newCards[idx] = updatedObject;
-    setCards(newCards);
   }
 
   return (
